@@ -1,16 +1,22 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class prime {
-    public int getPrimeNumCount(int start, int end) {
-        int primeCount = 0;
+    public List<Integer> getPrimeNumber(int start, int end) {
+        List<Integer> list = new ArrayList<>();
+        boolean isPrime;
         for (int i = start; i <= end; i++) {
-            for (int j = 2; j < i; j++) {
+            isPrime = true;
+            for (int j = 2; j <= Math.sqrt(i); j++) {
                 if (i % j == 0) {
+                    isPrime = false;
                     break;
                 }
-                System.out.println("prime number: " + i);
-                primeCount++;
-                break;
+            }
+            if(isPrime){
+                list.add(i);
             }
         }
-        return primeCount;
+        return list;
     }
 }
